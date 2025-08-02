@@ -2,12 +2,11 @@ import pandas as pd
 import pyodbc # Pyodbc is a Python library that allows you to connect to Microsoft SQL Server databases using ODBC.
 import nltk
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
-import Customer_reviews_sentiment
+
 # Download the Vader lexicon for sentiment analysis
-nltk.download('vader_lexicon')
-#print(pyodbc.drivers())
-print(Customer_reviews_sentiment)
-'''
+#nltk.download('vader_lexicon') #Only needed if not preinstalled 
+
+
 def fetch_data_sql():
     connenction_str = (
         #Establish the string for connecting to my databse
@@ -27,7 +26,6 @@ def fetch_data_sql():
     return df
 
 customer_reviews_df = fetch_data_sql()
-
 #Initalize the Vader Sentiment Intensity Analyzer
 sia = SentimentIntensityAnalyzer()
 
@@ -79,4 +77,4 @@ customer_reviews_df['SentimentBucket'] = customer_reviews_df['SentimentScore'].a
 
 print(customer_reviews_df.head())
 #Save the dataframe to a .csv file
-customer_reviews_df.to_csv('customer_review_with_sentiment.csv',index = False) '''
+customer_reviews_df.to_csv('customer_review_with_sentiment.csv',index = False) 
